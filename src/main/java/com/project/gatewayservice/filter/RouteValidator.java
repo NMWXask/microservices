@@ -1,6 +1,6 @@
 package com.project.gatewayservice.filter;
 
-import org.springframework.http.server.ServletServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -11,11 +11,11 @@ public class RouteValidator {
 
     public static final List<String> openApiEndpoints = List.of(
       "/auth/register",
-      "/auth/token",
+      "/auth/authenticate",
       "/eureka"
     );
 
-    public Predicate<ServletServerHttpRequest> isSecured =
+    public Predicate<ServerHttpRequest> isSecured =
             request -> openApiEndpoints
                     .stream()
                     .noneMatch(uri -> request.getURI().getPath().contains(uri));
