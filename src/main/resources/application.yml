@@ -2,17 +2,17 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: student-service
-          uri: lb://STUDENT-SERVICE
+        - id: artist-service
+          uri: lb://ARTIST-SERVICE
           predicates:
-            - Path=/student/**
+            - Path=/artist/**
           filters:
             - RedirectToAuthenticationFilter
 
-        - id: course-service
-          uri: lb://COURSE-SERVICE
+        - id: ticket-service
+          uri: lb://TICKET-SERVICE
           predicates:
-            - Path=/course/**
+            - Path=/ticket/**
           filters:
             - RedirectToAuthenticationFilter
 
