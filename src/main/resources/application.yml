@@ -3,35 +3,33 @@ spring:
     gateway:
       routes:
         - id: booking-service
-          uri: lb://BOOKING-SERVICE
+          uri: lb://booking-service
           predicates:
             - Path=/booking/**
           filters:
             - RedirectToAuthenticationFilter
 
         - id: artist-service
-          uri: lb://ARTIST-SERVICE
+          uri: lb://artist-service
           predicates:
             - Path=/artist/**
           filters:
             - RedirectToAuthenticationFilter
 
         - id: ticket-service
-          uri: lb://TICKET-SERVICE
+          uri: lb://ticket-service
           predicates:
             - Path=/ticket/**
           filters:
             - RedirectToAuthenticationFilter
 
         - id: identity-service
-          uri: lb://IDENTITY-SERVICE
+          uri: lb://identity-service
           predicates:
             - Path=/auth/**
 
   application:
-    name: GATEWAY-SERVICE
-  config:
-    import: optional:configserver:http://localhost:8888/
+    name: gateway-service
 
 eureka:
   client:
