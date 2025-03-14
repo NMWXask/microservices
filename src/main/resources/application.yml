@@ -23,6 +23,13 @@ spring:
           filters:
             - RedirectToAuthenticationFilter
 
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=api/v1/notification/**
+          filters:
+            - RedirectToAuthenticationFilter
+
         - id: identity-service
           uri: lb://identity-service
           predicates:
